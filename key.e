@@ -25,14 +25,18 @@ feature-- Initialization
 make(value_input: INTEGER)
         do
         set_value(value_input)
+        create right_node.make (1)
+        create left_node.make (0)
         end
 
 feature-- Status
 
 value: INTEGER -- value of key
-left_node:detachable NODE --node which contains smaller values than value
-right_node:detachable NODE --node which contains bigger values than value
+left_node:NODE --node which contains smaller values than value
+right_node: NODE --node which contains bigger values than value
 is_real:BOOLEAN
+has_left_node: BOOLEAN
+has_right_node: BOOLEAN
 
 
 
@@ -42,12 +46,14 @@ feature -- Access
             -- sets the right node of key object, which contains bigger key values than this key
         do
             right_node:=right_node_input
+            has_right_node:=TRUE
         end
 
         set_left_node(left_node_input: NODE)
             -- sets the left node of key object, which contains smaller key values than this key
         do
             left_node:=left_node_input
+            has_left_node:=TRUE
         end
 
         set_value(value_input: INTEGER)
@@ -65,6 +71,23 @@ feature -- Access
         get_is_real:BOOLEAN
         do
         Result:= is_real
+        end
+        get_has_left_node:BOOLEAN
+        do
+        	Result:=has_left_node
+        end
+
+        get_has_right_node:BOOLEAN
+        do
+        	Result:=has_right_node
+        end
+        get_left_node:NODE
+        do
+        	Result:=left_node
+        end
+        get_right_node:NODE
+        do
+        	Result:=right_node
         end
 end
 
