@@ -39,12 +39,12 @@ void putTextintoVec(std::string filename/*, std::fstream& destFile*/) {
 		
 	}
 	myFile.close();
-	if (t1Done == false && t2Done == false) {
+	/*if (t1Done == false && t2Done == false) {
 		t1Done = true;
 	}
 	else if (t1Done && t2Done == false ) {
 		t2Done = true;
-	}
+	}*/
 }	
 
 void getTextEndingInVec(std::string ending, std::vector<std::string> vec) {
@@ -69,8 +69,8 @@ int main()
 	
 	std::thread	t1(putTextintoVec, "mails1.txt");
 	std::thread t2(putTextintoVec, "mails2.txt");
-	t1Done = false;
-	t2Done = false;
+	//t1Done = false;
+	//t2Done = false;
 
 	if (t2.joinable())
 	{
@@ -80,9 +80,9 @@ int main()
 	{
 		t1.join();
 	}
-	while (t1Done == false && t2Done==false) {
+	/*while (t1Done == false && t2Done==false) {
 
-	}
+	}*/
 	std::thread t3(getTextEndingInVec, ".edu", vec);
 	if (t3.joinable())
 	{
